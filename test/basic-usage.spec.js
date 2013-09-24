@@ -62,6 +62,6 @@ describe('final-events dispatcher', function () {
     disp1.off('test', spy);
     disp1.trigger('test');
     expect(spy).not.toHaveBeenCalled();
-  })
+  });
 
 });
