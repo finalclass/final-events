@@ -1,11 +1,3 @@
-/*! final-events 2013-09-24 */
-(function(exports){
-
-  if (typeof exports !== 'undefined') {
-    exports.dispatcher = require('./dispatcher.js').dispatcher;
-  }
-
-})(typeof exports === 'undefined'? this['finalEvents'] = {}: exports);
 (function (exports) {
 
   function addEventListener(eventType, eventHandler) {

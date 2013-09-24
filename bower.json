@@ -1,13 +1,13 @@
 {
-  "name": "eventDispatcher",
-  "main": "src/eventDispatcher.js",
+  "name": "final-events",
+  "main": "src/index.js",
   "version": "0.0.0",
   "authors": [
     "Szymon WYgnański <s@finalclass.net>"
   ],
   "description": "Event Dispatcher with bubbling feature",
   "license": "MIT",
-  "homepage": "https://github.com/finalclass/eventDispatcher",
+  "homepage": "https://github.com/finalclass/final-events",
   "ignore": [
     "**/.*",
     "node_modules",
