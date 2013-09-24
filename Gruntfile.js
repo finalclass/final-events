@@ -7,8 +7,8 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: ['src/polyfill.js', 'src/index.js', 'src/dispatcher.js'],
-        dest: 'build/eventDispatcher.js'
+        src: ['src/polyfills.js', 'src/dispatcher.js'],
+        dest: 'build/finel-events.js'
       }
     },
     uglify: {
@@ -16,8 +16,8 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: ['src/polyfill.js', 'src/index.js', 'src/dispatcher.js'],
-        dest: 'build/eventDispatcher.min.js'
+        src: ['src/polyfills.js', 'src/dispatcher.js'],
+        dest: 'build/finel-events.min.js'
       }
     },
     watch: {

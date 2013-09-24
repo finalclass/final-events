@@ -86,6 +86,7 @@
     if (!target['@eventListeners']) { //the most characteristic property
       Object.defineProperties(target, defaultDescriptor);
     }
+    return target;
   };
 
 })(typeof exports === 'undefined' ? this['finalEvents'] = {} : exports);
