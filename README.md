@@ -22,7 +22,7 @@ bower install final-events
 ```
 
 ```html
-<script type="text/javascript" href="/bower_components/build/final-events.js"></script>
+<script type="text/javascript" href="/bower_components/final-events/build/final-events.js"></script>
 <script>
     var dispatcher = window.finalEvents.dispatcher;
 </script>
