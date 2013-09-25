@@ -175,7 +175,7 @@ if (!Object.defineProperties) {
   }
 
   function hasEventListener(eventType) {
-    return this['@eventListeners'][eventType] !== undefined;
+    return this['@eventListeners'][eventType] !== undefined && this['@eventListeners'][eventType].length > 0;
   }
 
   function callListeners(event) {
@@ -250,7 +250,8 @@ if (!Object.defineProperties) {
       hasEventListener: {value: hasEventListener},
       dispatchEvent: {value: dispatchEvent},
       trigger: {value: dispatchEvent},
-      emit: {value: dispatchEvent}
+      emit: {value: dispatchEvent},
+      fire: {value: dispatchEvent}
     };
   }
 
