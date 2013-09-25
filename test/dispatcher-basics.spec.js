@@ -1,22 +1,6 @@
-var dispatcher = require('../build/finel-events.js').dispatcher;
+var dispatcher = require('../src/dispatcher.js').dispatcher;
 
-describe('final-events instantiation', function () {
-  var obj1, obj2
-
-  beforeEach(function () {
-    obj1 = {};
-    obj2 = {};
-  });
-
-  it('converts objects into event dispatcher', function () {
-    expect(function () {
-      dispatcher(obj1);
-    }).not.toThrow();
-    expect(obj1['@eventListeners']).toBeDefined();
-  });
-});
-
-describe('final-events dispatcher', function () {
+describe('final-events dispatcher basics', function () {
   var disp1, disp2;
 
   beforeEach(function () {

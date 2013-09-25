@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: ['src/polyfills.js', 'src/dispatcher.js'],
-        dest: 'build/finel-events.js'
+        dest: 'build/final-events.js'
       }
     },
     uglify: {
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: ['src/polyfills.js', 'src/dispatcher.js'],
-        dest: 'build/finel-events.min.js'
+        dest: 'build/final-events.min.js'
       }
     },
     watch: {
