@@ -1,7 +1,7 @@
-eventDispatcher
+Final-Events
 ===============
 
-Event Dispatcher with bubbling feature
+Event dispatcher with the bubbling feature
 
 ## Installation
 
