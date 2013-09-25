@@ -1,6 +1,6 @@
 {
   "name": "final-events",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Event Dispatcher with bubbling feature",
   "main": "src/eventDispatcher.js",
   "author": "Szymon Wygnański <s@finalclass.net>",
