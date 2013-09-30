@@ -15,6 +15,9 @@
   }
 
   exports.event = function (target) {
+    if (typeof target === 'string') {
+      target = {type: target};
+    }
     if (!target['@propagationStopped']) { //the most characteristic property
       Object.defineProperties(target, getDefaultDescriptor());
     }

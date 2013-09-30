@@ -1,6 +1,10 @@
 (function (exports) {
 
-  var event = (typeof window === 'undefined') ? require('./event.js') : finalEvents.event;
+  if (typeof finalEvents === 'undefined') { //node environment
+    finalEvents = {
+      event: require('./event.js').event
+    }
+  }
 
   function initHandlersForEventType(eventType, target) {
     if (!target.hasEventListener(eventType)) {
@@ -118,10 +122,7 @@
   }
   
   function dispatchEvent(event) {
-    if (typeof event === 'string') {
-      event = {type: event};
-    }
-
+    event = finalEvents.event(event);
     event.target = this;
 
     capturePhase(event);
