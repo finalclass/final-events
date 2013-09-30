@@ -1,5 +1,7 @@
 (function (exports) {
 
+  var event = (typeof window === 'undefined') ? require('./event.js') : finalEvents.event;
+
   function initHandlersForEventType(eventType, target) {
     if (!target.hasEventListener(eventType)) {
       target['@eventListeners'][eventType] = [];
@@ -93,20 +95,23 @@
   function capturePhase(event) {
     var parents = findParents(event.target);
     event.phase = exports.CAPTURE_PHASE;
-    while (event.currentTarget = parents.pop()) {
+    while (!event['@propagationStopped'] && parents.length > 0) {
+      event.currentTarget = parents.pop();
       callListeners(event);
     }
   }
   
   function targetPhase(event) {
-    event.phase = exports.TARGET_PHASE;
-    event.currentTarget = event.target;
-    callListeners(event);
+    if (!event['@propagationStopped']) {
+      event.phase = exports.TARGET_PHASE;
+      event.currentTarget = event.target;
+      callListeners(event);
+    }
   }
   
   function bubblingPhase(event) {
     event.phase = exports.BUBBLING_PHASE;
-    while (event.bubble && event.currentTarget.parent) {
+    while (!event['@propagationStopped'] && event.currentTarget.parent) {
       event.currentTarget = event.currentTarget.parent;
       callListeners(event);
     }
