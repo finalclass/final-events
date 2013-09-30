@@ -131,6 +131,9 @@ if (!Object.defineProperties) {
   }
 
   exports.event = function (target) {
+    if (typeof target === 'string') {
+      target = {type: target};
+    }
     if (!target['@propagationStopped']) { //the most characteristic property
       Object.defineProperties(target, getDefaultDescriptor());
     }
@@ -140,7 +143,11 @@ if (!Object.defineProperties) {
 })(typeof exports === 'undefined' ? this['finalEvents'] = {} : exports);
 (function (exports) {
 
-  var event = (typeof window === 'undefined') ? require('./event.js') : finalEvents.event;
+  if (typeof finalEvents === 'undefined') { //node environment
+    finalEvents = {
+      event: require('./event.js').event
+    }
+  }
 
   function initHandlersForEventType(eventType, target) {
     if (!target.hasEventListener(eventType)) {
@@ -258,10 +265,7 @@ if (!Object.defineProperties) {
   }
   
   function dispatchEvent(event) {
-    if (typeof event === 'string') {
-      event = {type: event};
-    }
-
+    event = finalEvents.event(event);
     event.target = this;
 
     capturePhase(event);
