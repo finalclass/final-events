@@ -36,7 +36,7 @@ describe('final-events capture target bubbling', function () {
     root.on('test', function (event) {
       expect(event.phase).toBe(finalEvents.BUBBLING_PHASE);
     });
-    child.trigger('test');
+    child.trigger({type: 'test', bubble: true});
   });
 
   it('order of phsses: capture, target, bubble', function () {
@@ -65,7 +65,7 @@ describe('final-events capture target bubbling', function () {
       bubblingSpy();
     }, false);
 
-    child.trigger('test');
+    child.trigger({type: 'test', bubble: true});
 
     expect(captureSpy.callCount).toBe(1);
     expect(targetSpy.callCount).toBe(1);

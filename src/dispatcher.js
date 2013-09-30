@@ -7,6 +7,9 @@
   }
 
   function addEventListener(eventType, eventHandler, useCapture) {
+    if (!(eventHandler instanceof Function)) {
+      throw new TypeError('eventHandler is not a function');
+    }
     initHandlersForEventType(eventType, this);
     this['@eventListeners'][eventType].push({
       handler: eventHandler,
@@ -103,7 +106,8 @@
   
   function bubblingPhase(event) {
     event.phase = exports.BUBBLING_PHASE;
-    while (event.currentTarget = event.currentTarget.parent) {
+    while (event.bubble && event.currentTarget.parent) {
+      event.currentTarget = event.currentTarget.parent;
       callListeners(event);
     }
   }

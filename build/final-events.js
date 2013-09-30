@@ -1,4 +1,4 @@
-/*! final-events 2013-09-25 */
+/*! final-events 2013-09-30 */
 // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 if (!Object.keys) {
   Object.keys = (function () {
@@ -123,6 +123,9 @@ if (!Object.defineProperties) {
   }
 
   function addEventListener(eventType, eventHandler, useCapture) {
+    if (!(eventHandler instanceof Function)) {
+      throw new TypeError('eventHandler is not a function');
+    }
     initHandlersForEventType(eventType, this);
     this['@eventListeners'][eventType].push({
       handler: eventHandler,
@@ -219,7 +222,8 @@ if (!Object.defineProperties) {
   
   function bubblingPhase(event) {
     event.phase = exports.BUBBLING_PHASE;
-    while (event.currentTarget = event.currentTarget.parent) {
+    while (event.bubble && event.currentTarget.parent) {
+      event.currentTarget = event.currentTarget.parent;
       callListeners(event);
     }
   }

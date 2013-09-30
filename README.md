@@ -111,7 +111,7 @@ Returns true if `this` has any listener for the given eventType
 
 #### dispatchEvent(event:string|object) : Object
 
-The `event` argument can be eighter string or object with the type property.
+The `event` argument can be either string or object with the type property.
 If `event` argument is a string then it's converted to the object ({type: event}).
 The default syntax is to give object ({type:string}) as an argument however if you provide string
 then it's ok - it'll be converted to the object. So these are valid invocations:
@@ -133,13 +133,13 @@ disp.dispatchEvent({data: 'abc'}); //no type property provided
 
 finalEvents uses duck typing and for the dispatcher an event is an every object that has a type property.
 
-After dispatching a event it's at first at capture phase. This means that this event will capture from top of a three to the bottom.
+After dispatching a event it's at first at capture phase. This means that this event will capture from top of a tree to the bottom.
 
 Next step is the target phase. In this phase the event is on the target that dispatched it.
 
-The final phase is a bubbling phase. Now event flows from the target to the root. When it reaches the root element the event is destroyed.
+The final phase is a bubbling phase. This phase will occure only if `event.bubble === true`. In this phase event flows from the target to the root of a tree. When it reaches the root element the event is destroyed.
 
-A tree is determined byt the `parent` property of the leaf object. If there is no `parent` property, event will not be in the capture phase nor in the bubbling phase.
+A tree is determined by the `parent` property of leaf objects. If there is no `parent` property, event will not be in the capture phase nor in the bubbling phase.
 
 #### trigger(event:string|object) : Object
 
