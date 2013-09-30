@@ -114,6 +114,9 @@ if (!Object.defineProperties) {
     });
   }
 }
+if (typeof window !== 'undefined') {
+  window.finalEvents = {};
+}
 (function (exports) {
 
   function getDefaultDescriptor() {
@@ -140,13 +143,11 @@ if (!Object.defineProperties) {
     return target;
   };
 
-})(typeof exports === 'undefined' ? this['finalEvents'] = {} : exports);
+})(typeof exports === 'undefined' ? this['finalEvents'] : exports);
 (function (exports) {
 
   if (typeof finalEvents === 'undefined') { //node environment
-    finalEvents = {
-      event: require('./event.js').event
-    }
+    exports.event = require('./event.js').event;
   }
 
   function initHandlersForEventType(eventType, target) {
@@ -265,7 +266,7 @@ if (!Object.defineProperties) {
   }
   
   function dispatchEvent(event) {
-    event = finalEvents.event(event);
+    event = exports.event(event);
     event.target = this;
 
     capturePhase(event);
@@ -303,4 +304,4 @@ if (!Object.defineProperties) {
   exports.TARGET_PHASE = 2;
   exports.BUBBLING_PHASE = 3;
 
-})(typeof exports === 'undefined' ? this['finalEvents'] = {} : exports);
+})(typeof exports === 'undefined' ? this['finalEvents'] : exports);

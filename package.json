@@ -2,7 +2,7 @@
   "name": "final-events",
   "version": "0.4.3",
   "description": "Event Dispatcher with bubbling feature",
-  "main": "build/final-events.js",
+  "main": "src/init-node.js",
   "author": "Szymon Wygnański <s@finalclass.net>",
   "scripts": {
     "test": "jasmine-node test/"

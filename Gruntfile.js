@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: ['src/polyfills.js', 'src/event.js', 'src/dispatcher.js'],
+        src: ['src/polyfills.js', 'src/init-browser.js', 'src/event.js', 'src/dispatcher.js'],
         dest: 'build/final-events.js'
       }
     },
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: ['src/polyfills.js', 'src/event.js', 'src/dispatcher.js'],
+        src: ['src/polyfills.js', 'src/init-browser.js', 'src/event.js', 'src/dispatcher.js'],
         dest: 'build/final-events.min.js'
       }
     },

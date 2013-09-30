@@ -24,4 +24,4 @@
     return target;
   };
 
-})(typeof exports === 'undefined' ? this['finalEvents'] = {} : exports);
+})(typeof exports === 'undefined' ? this['finalEvents'] : exports);
