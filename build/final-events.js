@@ -1,4 +1,4 @@
-/*! final-events 2013-09-30 */
+/*! final-events 2015-02-13 */
 // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 if (!Object.keys) {
   Object.keys = (function () {
